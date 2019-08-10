@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="javascript/functions.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!-- css  -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/reset.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HotDogs House</title>
+</head>
+
+<body>
+  <a href="https://t.me/sectumsempra30"><img id="telegram" src="content/telegram.png" alt=""></a>
+  <a href="https://www.instagram.com/hnatiuk.m/"><img id="instagram" src="content/instagram.png" alt=""></a>
+  <div class="center">
+    <div id="image">
+      <img class="flexible-image" src="content/logo.png" alt="logo">
+    </div>
+
+    <div id="table" class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table id="customers" class="table table-bordered table-customers table-hover mb-0">
+
+        <tr>
+          <th># HotDog</th>
+          <th># Vegetables</th>
+          <th># Sauces</th>
+          <th># Price</th>
+          <th># Edit</th>
+          <th># Delete</th>
+        </tr>
+
+      </table>
+    </div>
+
+    <div class="add-form">
+      <form>
+        <div class="form-row">
+
+          <div class="form-group col-md-6">
+            <label for="formGroupExampleInput" class="form-group add-label">HotDog's Name</label>
+            <input id="input_name" type="text" class="form-control" placeholder="HotDog from California">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="formGroupExampleInput2" class="add-label">Vegetable</label>
+            <input type="text" class="form-control" id="input_vegetable" placeholder="Tomatoes, mushrooms..">
+          </div>
+
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group col-md-6 top-m">
+            <label for="formGroupExampleInput2" class="add-label">Sauces</label>
+            <input type="text" class="form-control" id="input_sauce" placeholder="Catsup, mayonnaise..">
+          </div>
+
+          <div class="form-group col-md-6 top-m">
+            <label for="formGroupExampleInput2" class="add-label">Price</label>
+            <input type="text" class="form-control" id="input_price" placeholder="25..">
+          </div>
+
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <input type="button" id="btn_add" value="Add" class="btn btn-primary"></button>
+            <input type="button" id="btn_cancel" value="Cancel" class="btn btn-danger"></button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+  <script type="text/javascript">
+    $.get(net, (data) => {
+      $.each(data, (index, value) => {
+        $("#customers").append('<tr><td>' + value.name + '</td><td>' + value.vegetable + '</td><td>' + value.sauce + '</td><td>' + value.price +
+          '</td><td><button type="button" class="clickedEdit btn btn-warning">Edit</button></td><td><button type="button" class="clickedDelete btn btn-danger">Delete</button></td></tr>');
+      })
+    });
+    $("#btn_cancel").hide();
+  </script>
+
+</body>
+
+</html>
